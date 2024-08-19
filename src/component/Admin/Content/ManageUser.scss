@@ -1,6 +1,11 @@
 .manage-user-container {
   padding: 10px;
   .users-content {
+    .btn-add-new {
+      button {
+        margin: 15px 0;
+      }
+    }
   }
   .title {
     font-weight: 600;
