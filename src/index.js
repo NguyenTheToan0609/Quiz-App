@@ -16,20 +16,20 @@ import DashBoard from "./component/Admin/Content/DashBroad";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route path="/users" element={<User />} />
-          </Route>
-          <Route path="/admins" element={<Admin />}>
-            <Route index element={<DashBoard />} />
-            <Route path="manage-user" element={<ManagerUser />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </React.StrictMode>
+    {/* <React.StrictMode> */}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="/users" element={<User />} />
+        </Route>
+        <Route path="/admins" element={<Admin />}>
+          <Route index element={<DashBoard />} />
+          <Route path="manage-user" element={<ManagerUser />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    {/* </React.StrictMode> */}
   </Provider>
 );
 
