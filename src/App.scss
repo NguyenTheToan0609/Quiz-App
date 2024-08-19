@@ -6,15 +6,81 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media (min-width: 1500px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+      max-width: 1450px !important;
+    }
+  }
 }
 
 .app-container {
   .header-container {
-    .navbar-nav {
+    .btn-login {
+      border-radius: 5px;
+      margin-right: 15px;
+      padding: 0 15px;
+      height: 40px;
+      border: 1px solid #535353;
+    }
+    .btn-signup {
+      border-radius: 5px;
+      padding: 0 15px;
+      border: 1px solid #535353;
+      background-color: black;
+      height: 40px;
+      color: white;
+
+      &:hover {
+        background-color: #535353;
+      }
+    }
+    .navbar {
       z-index: 10;
+      padding-top: 20px;
+      background-color: rgba(0, 0, 0, 0) !important;
       .nav-link {
         &.active {
           color: #00bfff;
+        }
+      }
+    }
+  }
+  .homepage-container {
+    .homepage-content {
+      position: relative;
+      padding: 100px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      .title-first {
+        font-size: 50px;
+        font-weight: 600;
+      }
+
+      .title-second {
+        font-size: 25px;
+      }
+
+      .btn-start {
+        width: 150px;
+        border-radius: 5px;
+        padding: 0 15px;
+        border: 1px solid #535353;
+        background-color: black;
+        height: 40px;
+        border: none;
+        color: white;
+
+        &:hover {
+          background-color: #535353;
         }
       }
     }
