@@ -12,6 +12,10 @@
       border: 1px solid green;
     }
     .admin-main {
+      .list-page-count {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 }
