@@ -5,7 +5,7 @@ import { FcPlus } from "react-icons/fc";
 import _ from "lodash";
 
 const ModalUpdateUser = (props) => {
-  const { show, setShow, dataView } = props;
+  const { show, setShow, dataView, resetViewData } = props;
 
   // const [show, setShow] = useState(false);
   const handleClose = () => {
@@ -16,7 +16,7 @@ const ModalUpdateUser = (props) => {
     setRole("USER");
     setImage("");
     setPreviewimage("");
-    // resetUpdateData();
+    resetViewData();
   };
 
   const [email, setEmail] = useState("");
@@ -39,8 +39,6 @@ const ModalUpdateUser = (props) => {
     }
   }, [dataView]);
 
-  console.log("check dataView", dataView);
-
   return (
     <>
       <Modal
@@ -51,7 +49,7 @@ const ModalUpdateUser = (props) => {
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update a User</Modal.Title>
+          <Modal.Title>View a Info User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
