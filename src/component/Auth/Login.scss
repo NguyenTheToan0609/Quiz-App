@@ -3,7 +3,18 @@
     margin-bottom: 50px;
     height: 45px;
     text-align: right;
-    border: 1px solid red;
+    padding: 5px 100px 0 100px;
+
+    button {
+      padding: 3px 15px;
+      margin-left: 15px;
+      border-radius: 5px;
+      background: #f9f9f9;
+      border: 1px solid;
+      &:hover {
+        background: white;
+      }
+    }
   }
   .title {
     font-size: 25px;
@@ -37,6 +48,7 @@
     }
 
     .forget-password {
+      text-decoration: underline;
     }
 
     .btn-submit {
@@ -47,6 +59,10 @@
       margin: 20px 0;
       color: white;
       background-color: black;
+    }
+
+    .back {
+      cursor: pointer;
     }
   }
 }
