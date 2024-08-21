@@ -39,9 +39,9 @@ const Login = (props) => {
     <div className="login-container">
       <div className="header">
         <span>Don't have an account yet ?</span>
-        <button className="">Sign Up</button>
+        <button onClick={() => navigate("/register")}>Sign Up</button>
       </div>
-      <div className="title col-4 mx-auto">TypeForm</div>
+      <div className="title col-4 mx-auto">TypeForm Login</div>
       <div className="welcome col-4 mx-auto">Hello,who's this</div>
       <div className="content-form col-4 mx-auto ">
         <div className="form-group">
