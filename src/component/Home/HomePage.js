@@ -1,6 +1,10 @@
 import videoHomepage from "../../assets/video-homepage.mp4";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const nagivate = useNavigate();
   return (
     <div className="homepage-container">
       <video autoPlay muted loop>
@@ -14,7 +18,17 @@ const HomePage = () => {
           make form-filling feel effortless by replacing walls of questions with
           just one at a time.
         </div>
-        <button className="btn-start">Get's started</button>
+        <div>
+          {isAuthenticated === false ? (
+            <button className="btn-start" onClick={() => nagivate("/login")}>
+              Get's started
+            </button>
+          ) : (
+            <button className="btn-start" onClick={() => nagivate("/users")}>
+              Doing Quiz Now
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
