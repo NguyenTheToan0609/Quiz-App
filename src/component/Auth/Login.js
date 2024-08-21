@@ -5,11 +5,12 @@ import { postLogin } from "../../services/apiServices";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { doLogin } from "../../redux/action/userAction";
+import { ImSpinner10 } from "react-icons/im";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -30,14 +31,17 @@ const Login = (props) => {
       return;
     }
 
-    let data = await postLogin(email, password);
+    setIsLoading(true);
+    let data = await postLogin(email, password, 5000);
     if (data && data.EC === 0) {
       dispatch(doLogin(data));
-
       toast.success(data.EM);
+      setIsLoading(false);
+      navigate("/");
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
+      setIsLoading(false);
     }
   };
 
@@ -72,9 +76,11 @@ const Login = (props) => {
         <div>
           <button
             className="btn-submit"
-            onClick={() => handleLogin(navigate("/"))}
+            onClick={() => handleLogin()}
+            disabled={isLoading}
           >
-            Login in to Typeform
+            {isLoading === true && <ImSpinner10 className="loader-Icon" />}
+            Login to Typeform
           </button>
         </div>
         <div className="text-center">
