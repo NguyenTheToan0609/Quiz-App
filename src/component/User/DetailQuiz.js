@@ -4,13 +4,12 @@ import { getDataQuiz } from "../../services/apiServices";
 import Question from "./Question";
 import _ from "lodash";
 import "./DetailQuiz.scss";
-import { queryByTitle } from "@testing-library/react";
 
 const DetailQuiz = () => {
   const params = useParams();
   const location = useLocation();
   const quizId = params.id;
-  const [dataQuiz, setDataQuiz] = useState("");
+  const [dataQuiz, setDataQuiz] = useState([]);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -68,7 +67,7 @@ const DetailQuiz = () => {
         }
         return item;
       });
-      // console.log("check b", b);
+      console.log("check b", b);
     }
     let index = dataQuizClone.findIndex(
       (item) => +item.questionID === +questionId
@@ -76,6 +75,48 @@ const DetailQuiz = () => {
     if (index > -1) {
       dataQuizClone[index] = question;
       setDataQuiz(dataQuizClone);
+    }
+  };
+
+  //   {
+  //     "quizId": 1,
+  //     "answers": [
+  //         {
+  //             "questionId": 1,
+  //             "userAnswerId": [3]
+  //         },
+  //         {
+  //             "questionId": 2,
+  //             "userAnswerId": [6]
+  //         }
+  //     ]
+  // }
+  const handleFinish = () => {
+    console.log("check data before submit : ", dataQuiz);
+
+    let qayload = {
+      quizId: +quizId,
+      answers: [],
+    };
+
+    let answers = [];
+    if (dataQuiz && dataQuiz.length > 0) {
+      dataQuiz.forEach((question) => {
+        let questionId = question.questionID;
+        let userAnswerId = [];
+
+        question.answers.forEach((a) => {
+          if (a.isSelected === true) {
+            userAnswerId.push(a.id);
+          }
+        });
+        answers.push({
+          questionId: +questionId,
+          userAnswerId: userAnswerId,
+        });
+      });
+      qayload.answers = answers;
+      console.log("final payload ", qayload);
     }
   };
 
@@ -104,7 +145,7 @@ const DetailQuiz = () => {
           <button className="btn btn-primary" onClick={() => handleNext()}>
             Next
           </button>
-          <button className="btn btn-warning" onClick={() => handleNext()}>
+          <button className="btn btn-warning" onClick={() => handleFinish()}>
             Finish
           </button>
         </div>
