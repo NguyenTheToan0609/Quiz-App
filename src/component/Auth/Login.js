@@ -90,7 +90,7 @@ const Login = (props) => {
               navigate("/");
             }}
           >
-            &#60;&#60;Back to go HomePage
+            &#60;&#60;Go to HomePage
           </span>
         </div>
       </div>

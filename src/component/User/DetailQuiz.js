@@ -4,11 +4,11 @@ import { getDataQuiz } from "../../services/apiServices";
 import Question from "./Question";
 import _ from "lodash";
 import "./DetailQuiz.scss";
+import { queryByTitle } from "@testing-library/react";
 
 const DetailQuiz = () => {
   const params = useParams();
   const location = useLocation();
-  console.log(location);
   const quizId = params.id;
   const [dataQuiz, setDataQuiz] = useState("");
   const [index, setIndex] = useState(0);
@@ -34,9 +34,10 @@ const DetailQuiz = () => {
               questionDescription = item.description;
               image = item.image;
             }
+            item.answers.isSelected = false;
             answers.push(item.answers);
           });
-          console.log("value :", value, "key", key);
+          // console.log("value :", value, "key", key);
 
           return { questionID: key, answers, questionDescription, image };
         })
@@ -55,6 +56,29 @@ const DetailQuiz = () => {
     if (dataQuiz && dataQuiz.length > index + 1) setIndex(index + 1);
   };
 
+  const handleCheckBox = (answerId, questionId) => {
+    let dataQuizClone = _.cloneDeep(dataQuiz);
+    let question = dataQuizClone.find(
+      (item) => +item.questionID === +questionId
+    );
+    if (question && question.answers) {
+      let b = question.answers.map((item) => {
+        if (+item.id === +answerId) {
+          item.isSelected = !item.isSelected;
+        }
+        return item;
+      });
+      // console.log("check b", b);
+    }
+    let index = dataQuizClone.findIndex(
+      (item) => +item.questionID === +questionId
+    );
+    if (index > -1) {
+      dataQuizClone[index] = question;
+      setDataQuiz(dataQuizClone);
+    }
+  };
+
   return (
     <div className="detail-quiz-container">
       <div className="left-content">
@@ -68,6 +92,7 @@ const DetailQuiz = () => {
         <div className="q-content">
           <Question
             index={index}
+            handleCheckBox={handleCheckBox}
             data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[index] : []}
           />
         </div>
@@ -78,6 +103,9 @@ const DetailQuiz = () => {
           </button>
           <button className="btn btn-primary" onClick={() => handleNext()}>
             Next
+          </button>
+          <button className="btn btn-warning" onClick={() => handleNext()}>
+            Finish
           </button>
         </div>
       </div>
