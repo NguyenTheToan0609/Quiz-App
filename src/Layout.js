@@ -3,7 +3,7 @@ import App from "./App";
 import User from "./component/User/User";
 import Admin from "./component/Admin/Admin";
 import HomePage from "./component/Home/HomePage";
-import ManagerUser from "./component/Admin/Content/ManageUser";
+import ManagerUser from "./component/Admin/Content/User/ManageUser";
 import DashBoard from "./component/Admin/Content/DashBroad";
 import Login from "./component/Auth/Login";
 import { ToastContainer } from "react-toastify";
