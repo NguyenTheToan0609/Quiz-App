@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./component/Auth/Register";
 import ListQuiz from "./component/User/ListQuiz";
 import DetailQuiz from "./component/User/DetailQuiz";
+import ManageQuiz from "./component/Admin/Content/Quiz/ManageQuiz";
 
 const NotFound = () => {
   return (
@@ -31,6 +32,7 @@ const Layout = (props) => {
         <Route path="/admins" element={<Admin />}>
           <Route index element={<DashBoard />} />
           <Route path="manage-user" element={<ManagerUser />} />
+          <Route path="manage-quiz" element={<ManageQuiz />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

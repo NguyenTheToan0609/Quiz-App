@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 
 const ModalResult = (props) => {
-  const { show, setShow, dataModal } = props;
+  const { show, setShow, dataModalResult } = props;
 
   const handleClose = () => setShow(false);
 
@@ -16,10 +16,10 @@ const ModalResult = (props) => {
         </Modal.Header>
         <Modal.Body>
           <div>
-            Toal Question: <b>{dataModal.countTotal}</b>{" "}
+            Toal Question: <b>{dataModalResult.countTotal}</b>
           </div>
           <div>
-            Total Correct answer: <b>{dataModal.countCorrect}</b>
+            Total Correct answer: <b>{dataModalResult.countCorrect}</b>
           </div>
         </Modal.Body>
         <Modal.Footer>

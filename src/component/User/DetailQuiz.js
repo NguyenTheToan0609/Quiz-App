@@ -13,7 +13,7 @@ const DetailQuiz = () => {
   const [dataQuiz, setDataQuiz] = useState([]);
   const [index, setIndex] = useState(0);
   const [isShowModelReult, setIsShowModelReult] = useState(false);
-  const [dataModal, setDataModal] = useState({});
+  const [dataModalResult, setDataModalResult] = useState({});
 
   useEffect(() => {
     fetchQuestion();
@@ -108,7 +108,7 @@ const DetailQuiz = () => {
       let res = await postSubmitQuiz(qayload);
       console.log("check", res);
       if (res && res.EC === 0) {
-        setDataModal({
+        setDataModalResult({
           countCorrect: res.DT.countCorrect,
           countTotal: res.DT.countTotal,
           quizData: res.DT.quizData,
@@ -154,7 +154,7 @@ const DetailQuiz = () => {
       <ModalResult
         show={isShowModelReult}
         setShow={setIsShowModelReult}
-        dataModal={dataModal}
+        dataModalResult={dataModalResult}
       />
     </div>
   );
