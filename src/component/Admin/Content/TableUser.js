@@ -28,7 +28,13 @@ const TableUser = (props) => {
                   <td>{item.username}</td>
                   <td>{item.email}</td>
                   <td>{item.role}</td>
-                  <td>
+                  <td
+                    style={{
+                      display: "flex",
+                      gap: 10,
+                      justifyContent: "center",
+                    }}
+                  >
                     <button
                       className="btn btn-secondary"
                       onClick={() => handleClickBtnView(item)}
