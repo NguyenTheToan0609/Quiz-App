@@ -7,6 +7,8 @@ import { BsFillPatchMinusFill } from "react-icons/bs";
 import { RiImageAddFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 import _, { cloneDeep, set } from "lodash";
+import Lightbox from "react-awesome-lightbox";
+
 const Questions = () => {
   const options = [
     { value: "chocolate", label: "Chocolate" },
@@ -29,6 +31,12 @@ const Questions = () => {
       ],
     },
   ]);
+
+  const [isPreViewImage, setIsPreViewImage] = useState(false);
+  const [dateImagePreview, setDateImagePreview] = useState({
+    title: "",
+    url: "",
+  });
 
   const handleAddRemoveQuestion = (type, id) => {
     if (type === "ADD") {
@@ -128,6 +136,17 @@ const Questions = () => {
     setQuestions(questionsClone);
   };
 
+  const handlePreviewImage = (questionID) => {
+    let questionsClone = _.cloneDeep(questions);
+    let index = questionsClone.findIndex((item) => item.id === questionID);
+    if (index > -1) {
+      setDateImagePreview({
+        url: URL.createObjectURL(questionsClone[index].imageFile),
+        title: questionsClone[index].imageName,
+      });
+    }
+    setIsPreViewImage(true);
+  };
   const handleSubmitQuetionForQuiz = () => {
     console.log("questions", questions);
   };
@@ -182,9 +201,16 @@ const Questions = () => {
                       }
                     />
                     <span>
-                      {question.imageName
-                        ? question.imageName
-                        : "0 file is upload"}
+                      {question.imageName ? (
+                        <span
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handlePreviewImage(question.id)}
+                        >
+                          {question.imageName}
+                        </span>
+                      ) : (
+                        "0 file is upload"
+                      )}
                     </span>
                   </div>
                   <div className="btn-group">
@@ -278,6 +304,14 @@ const Questions = () => {
               Save Questions
             </button>
           </div>
+        )}
+
+        {isPreViewImage === true && (
+          <Lightbox
+            image={dateImagePreview.url}
+            title={dateImagePreview.title}
+            onClose={() => setIsPreViewImage(false)}
+          ></Lightbox>
         )}
       </div>
     </div>
