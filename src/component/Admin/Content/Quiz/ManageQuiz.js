@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ManageQuiz.scss";
 import Select from "react-select";
-import { postCreateNewQuiz } from "../../../../services/apiServices";
+import {
+  postCreateNewQuiz,
+  getAllQuizForAdmin,
+} from "../../../../services/apiServices";
 import { toast } from "react-toastify";
 import TableQuiz from "./TableQuiz";
 import Accordion from "react-bootstrap/Accordion";
@@ -35,11 +38,10 @@ const ManageQuiz = () => {
       setName("");
       setDescription("");
       setType("");
-    } else {
+    }
+    if (res && res.EC !== 0) {
       toast.error(res.EM);
     }
-
-    console.log(res);
   };
 
   return (

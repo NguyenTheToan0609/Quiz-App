@@ -42,7 +42,6 @@ const ManagerUser = (props) => {
   const fetchListUserWithPaginate = async (page) => {
     let res = await getUserWithPaginate(page, LIMIT_USER);
     if (res.EC === 0) {
-      console.log("res", res.DT);
       setlistUsers(res.DT.users);
       setPageCount(res.DT.totalPages);
     }
