@@ -14,6 +14,7 @@ import {
   getAllQuizForAdmin,
   postCreateNewQuestionForQuiz,
   postCreateNewAnswerForQuiz,
+  postUpsertQA,
 } from "../../../../services/apiServices";
 
 import Lightbox from "react-awesome-lightbox";
@@ -249,31 +250,54 @@ const QuizQA = () => {
         break;
       }
     }
+
     if (isValidQ === false) {
       toast.error(`Not empty description for question ${indexQ1 + 1}`);
       return;
     }
 
-    //submit questions
-    for (const question of questions) {
-      const q = await postCreateNewQuestionForQuiz(
-        +selectedQuiz.value,
-        question.description,
-        question.imageFile
-      );
+    // //submit questions
+    // for (const question of questions) {
+    //   const q = await postCreateNewQuestionForQuiz(
+    //     +selectedQuiz.value,
+    //     question.description,
+    //     question.imageFile
+    //   );
 
-      //submit answers
-      for (const answer of question.answers) {
-        await postCreateNewAnswerForQuiz(
-          answer.description,
-          answer.isCorrect,
-          q.DT.id
+    //   //submit answers
+    //   for (const answer of question.answers) {
+    //     await postCreateNewAnswerForQuiz(
+    //       answer.description,
+    //       answer.isCorrect,
+    //       q.DT.id
+    //     );
+    //   }
+    // }
+    let questionsClone = _.cloneDeep(questions);
+    for (let i = 0; i < questionsClone.length; i++) {
+      if (questionsClone[i].imageFile) {
+        questionsClone[i].imageFile = await toBase64(
+          questionsClone[i].imageFile
         );
       }
     }
-    toast.success("Create questions and answers success ");
-    setQuestions(initQuestions);
+    let res = await postUpsertQA({
+      quizId: selectedQuiz.value,
+      questions: questionsClone,
+    });
+    if (res && res.EC === 0) {
+      toast.success("Save questions and answers success ");
+      fetchWithQuizQA();
+    }
   };
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+    });
 
   return (
     <div className="questions-container">
