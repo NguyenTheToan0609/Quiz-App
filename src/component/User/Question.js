@@ -1,7 +1,11 @@
 import _ from "lodash";
+import { useState } from "react";
+import Lightbox from "react-awesome-lightbox";
+import { BsCursor } from "react-icons/bs";
 
 const Question = (props) => {
   const { data, index, handleCheckBox } = props;
+  const [isPreViewImage, setIsPreViewImage] = useState(false);
   if (_.isEmpty(data)) {
     return <></>;
   }
@@ -14,7 +18,18 @@ const Question = (props) => {
     <>
       {data.image ? (
         <div className="q-image">
-          <img src={`data:image/jpeg;base64,${data.image}`} />
+          <img
+            style={{ cursor: "pointer" }}
+            src={`data:image/jpeg;base64,${data.image}`}
+            onClick={() => setIsPreViewImage(true)}
+          />
+          {isPreViewImage === true && (
+            <Lightbox
+              image={`data:image/jpeg;base64,${data.image}`}
+              title={"Question Image"}
+              onClose={() => setIsPreViewImage(false)}
+            ></Lightbox>
+          )}
         </div>
       ) : (
         <div className="q-image"></div>
