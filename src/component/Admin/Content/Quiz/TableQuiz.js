@@ -20,7 +20,6 @@ const TableQuiz = (props) => {
     if (res && res.EC === 0) {
       setListQuiz(res.DT);
     }
-    console.log("check", res);
   };
 
   const handleUpdate = (quiz) => {

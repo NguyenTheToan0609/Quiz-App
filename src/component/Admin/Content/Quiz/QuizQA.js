@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import _ from "lodash";
 
 import {
+  getQuizWithQA,
   getAllQuizForAdmin,
   postCreateNewQuestionForQuiz,
   postCreateNewAnswerForQuiz,
@@ -21,20 +22,19 @@ const QuizQA = () => {
   const initQuestions = [
     {
       id: uuidv4(),
-      descripton: "",
+      description: "",
       imageName: "",
       imageFile: "",
       answers: [
         {
           id: uuidv4(),
-          descripton: "",
+          description: "",
           isCorrect: false,
         },
       ],
     },
   ];
   const [questions, setQuestions] = useState(initQuestions);
-
   const [isPreViewImage, setIsPreViewImage] = useState(false);
   const [dateImagePreview, setDateImagePreview] = useState({
     title: "",
@@ -46,6 +46,47 @@ const QuizQA = () => {
   useEffect(() => {
     fetchQuiz();
   }, []);
+
+  useEffect(() => {
+    if (selectedQuiz && selectedQuiz.value) {
+      fetchWithQuizQA();
+    }
+  }, [selectedQuiz]);
+
+  //Cần convert từ base64 về file để hiển thị:
+  function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[arr.length - 1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  }
+
+  const fetchWithQuizQA = async () => {
+    let res = await getQuizWithQA(selectedQuiz.value);
+    if (res && res.EC === 0) {
+      //consver base64 to file object
+      let newQA = [];
+      for (let i = 0; i < res.DT.qa.length; i++) {
+        let q = res.DT.qa[i];
+
+        if (q.imageFile) {
+          q.imageName = `Question-${q.id}.png`;
+          q.imageFile = dataURLtoFile(
+            await `data:image/png;base64,${q.imageFile}`,
+            `Question-${q.id}.png`,
+            "image/png"
+          );
+        }
+        newQA.push(q);
+      }
+      setQuestions(newQA);
+    }
+  };
 
   const fetchQuiz = async () => {
     let res = await getAllQuizForAdmin();
@@ -65,13 +106,13 @@ const QuizQA = () => {
       {
         const newQuestion = {
           id: uuidv4(),
-          descripton: "",
+          description: "",
           imageName: "",
           imageFile: "",
           answers: [
             {
               id: uuidv4(),
-              descripton: "",
+              description: "",
               isCorrect: false,
             },
           ],
@@ -92,7 +133,7 @@ const QuizQA = () => {
       {
         const newAnswer = {
           id: uuidv4(),
-          descripton: "",
+          description: "",
           isCorrect: false,
         };
         let index = questionsClone.findIndex((item) => item.id === questionID);
@@ -114,7 +155,7 @@ const QuizQA = () => {
     if (type === "QUESTION") {
       let index = questionsClone.findIndex((item) => item.id === questionID);
       if (index > -1) {
-        questionsClone[index].descripton = value;
+        questionsClone[index].description = value;
         setQuestions(questionsClone);
       }
     }
@@ -148,7 +189,7 @@ const QuizQA = () => {
               answer.isCorrect = value;
             }
             if (type === "INPUT") {
-              answer.descripton = value;
+              answer.description = value;
             }
           }
           return answer;
@@ -183,7 +224,7 @@ const QuizQA = () => {
       indexA = 0;
     for (let i = 0; i < questions.length; i++) {
       for (let j = 0; j < questions[i].answers.length; j++) {
-        if (!questions[i].answers[j].descripton) {
+        if (!questions[i].answers[j].description) {
           isValidAnswer = false;
           indexA = j;
           break;
@@ -202,7 +243,7 @@ const QuizQA = () => {
     let isValidQ = true;
     let indexQ1 = 0;
     for (let i = 0; i < questions.length; i++) {
-      if (!questions[i].descripton) {
+      if (!questions[i].description) {
         isValidQ = false;
         indexQ1 = i;
         break;
@@ -217,14 +258,14 @@ const QuizQA = () => {
     for (const question of questions) {
       const q = await postCreateNewQuestionForQuiz(
         +selectedQuiz.value,
-        question.descripton,
+        question.description,
         question.imageFile
       );
 
       //submit answers
       for (const answer of question.answers) {
         await postCreateNewAnswerForQuiz(
-          answer.descripton,
+          answer.description,
           answer.isCorrect,
           q.DT.id
         );
@@ -256,7 +297,7 @@ const QuizQA = () => {
                   <div className="mb-3 description">
                     <input
                       type="text"
-                      value={question.descripton}
+                      value={question.description}
                       className="form-control"
                       onChange={(event) =>
                         handleOnChange(
@@ -333,7 +374,7 @@ const QuizQA = () => {
 
                         <div className="mb-3 answer-name">
                           <input
-                            value={answer.descripton}
+                            value={answer.description}
                             type="text"
                             className="form-control"
                             onChange={(event) =>

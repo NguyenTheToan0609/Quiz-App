@@ -21,6 +21,9 @@ body {
 }
 
 .app-container {
+  .app-content {
+    height: calc(100vh - 60px);
+  }
   .header-container {
     .btn-login {
       border-radius: 5px;

@@ -21,13 +21,13 @@ const Questions = () => {
   const initQuestions = [
     {
       id: uuidv4(),
-      descripton: "",
+      description: "",
       imageName: "",
       imageFile: "",
       answers: [
         {
           id: uuidv4(),
-          descripton: "",
+          description: "",
           isCorrect: false,
         },
       ],
@@ -65,13 +65,13 @@ const Questions = () => {
       {
         const newQuestion = {
           id: uuidv4(),
-          descripton: "",
+          description: "",
           imageName: "",
           imageFile: "",
           answers: [
             {
               id: uuidv4(),
-              descripton: "",
+              description: "",
               isCorrect: false,
             },
           ],
@@ -92,7 +92,7 @@ const Questions = () => {
       {
         const newAnswer = {
           id: uuidv4(),
-          descripton: "",
+          description: "",
           isCorrect: false,
         };
         let index = questionsClone.findIndex((item) => item.id === questionID);
@@ -114,7 +114,7 @@ const Questions = () => {
     if (type === "QUESTION") {
       let index = questionsClone.findIndex((item) => item.id === questionID);
       if (index > -1) {
-        questionsClone[index].descripton = value;
+        questionsClone[index].description = value;
         setQuestions(questionsClone);
       }
     }
@@ -148,7 +148,7 @@ const Questions = () => {
               answer.isCorrect = value;
             }
             if (type === "INPUT") {
-              answer.descripton = value;
+              answer.description = value;
             }
           }
           return answer;
@@ -183,7 +183,7 @@ const Questions = () => {
       indexA = 0;
     for (let i = 0; i < questions.length; i++) {
       for (let j = 0; j < questions[i].answers.length; j++) {
-        if (!questions[i].answers[j].descripton) {
+        if (!questions[i].answers[j].description) {
           isValidAnswer = false;
           indexA = j;
           break;
@@ -202,7 +202,7 @@ const Questions = () => {
     let isValidQ = true;
     let indexQ1 = 0;
     for (let i = 0; i < questions.length; i++) {
-      if (!questions[i].descripton) {
+      if (!questions[i].description) {
         isValidQ = false;
         indexQ1 = i;
         break;
@@ -217,14 +217,14 @@ const Questions = () => {
     for (const question of questions) {
       const q = await postCreateNewQuestionForQuiz(
         +selectedQuiz.value,
-        question.descripton,
+        question.description,
         question.imageFile
       );
 
       //submit answers
       for (const answer of question.answers) {
         await postCreateNewAnswerForQuiz(
-          answer.descripton,
+          answer.description,
           answer.isCorrect,
           q.DT.id
         );
@@ -258,7 +258,7 @@ const Questions = () => {
                   <div className="mb-3 description">
                     <input
                       type="text"
-                      value={question.descripton}
+                      value={question.description}
                       className="form-control"
                       onChange={(event) =>
                         handleOnChange(
@@ -335,7 +335,7 @@ const Questions = () => {
 
                         <div className="mb-3 answer-name">
                           <input
-                            value={answer.descripton}
+                            value={answer.description}
                             type="text"
                             className="form-control"
                             onChange={(event) =>

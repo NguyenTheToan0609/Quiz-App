@@ -22,7 +22,6 @@ const ManageQuiz = () => {
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
   const [image, setImage] = useState(null);
-
   const handleChangeEvent = (event) => {
     if (event.target && event.target.files && event.target.files[0]) {
       setImage(event.target.files[0]);
@@ -34,6 +33,7 @@ const ManageQuiz = () => {
       toast.error("Name/Description is requierd");
       return;
     }
+
     let res = await postCreateNewQuiz(description, name, type?.value, image);
     if (res && res.EC === 0) {
       toast.success(res.EM);
