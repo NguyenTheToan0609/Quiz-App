@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Select from "react-select";
 import "./Questions.scss";
 import { BsFillPatchPlusFill } from "react-icons/bs";
@@ -6,17 +6,19 @@ import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { BsFillPatchMinusFill } from "react-icons/bs";
 import { RiImageAddFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
-import _, { cloneDeep, set } from "lodash";
+import { toast } from "react-toastify";
+import _ from "lodash";
+
+import {
+  getAllQuizForAdmin,
+  postCreateNewQuestionForQuiz,
+  postCreateNewAnswerForQuiz,
+} from "../../../../services/apiServices";
+
 import Lightbox from "react-awesome-lightbox";
 
 const Questions = () => {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
-  const [selectedQuiz, setSelectedQuiz] = useState({});
-  const [questions, setQuestions] = useState([
+  const initQuestions = [
     {
       id: uuidv4(),
       descripton: "",
@@ -30,13 +32,33 @@ const Questions = () => {
         },
       ],
     },
-  ]);
+  ];
+  const [questions, setQuestions] = useState(initQuestions);
 
   const [isPreViewImage, setIsPreViewImage] = useState(false);
   const [dateImagePreview, setDateImagePreview] = useState({
     title: "",
     url: "",
   });
+  const [listQuiz, setListQuiz] = useState([]);
+  const [selectedQuiz, setSelectedQuiz] = useState({});
+
+  useEffect(() => {
+    fetchQuiz();
+  }, []);
+
+  const fetchQuiz = async () => {
+    let res = await getAllQuizForAdmin();
+    if (res && res.EC === 0) {
+      let newQuiz = res.DT.map((item) => {
+        return {
+          value: item.id,
+          label: `${item.id}-${item.description}`,
+        };
+      });
+      setListQuiz(newQuiz);
+    }
+  };
 
   const handleAddRemoveQuestion = (type, id) => {
     if (type === "ADD") {
@@ -147,8 +169,69 @@ const Questions = () => {
     }
     setIsPreViewImage(true);
   };
-  const handleSubmitQuetionForQuiz = () => {
-    console.log("questions", questions);
+
+  const handleSubmitQuetionForQuiz = async () => {
+    //Valid Quiz
+    if (_.isEmpty(selectedQuiz)) {
+      toast.error("Please choose a Quiz");
+      return;
+    }
+
+    //Valid Answers
+    let isValidAnswer = true;
+    let indexQ = 0,
+      indexA = 0;
+    for (let i = 0; i < questions.length; i++) {
+      for (let j = 0; j < questions[i].answers.length; j++) {
+        if (!questions[i].answers[j].descripton) {
+          isValidAnswer = false;
+          indexA = j;
+          break;
+        }
+      }
+      indexQ = i;
+      if (isValidAnswer === false) break;
+    }
+
+    if (isValidAnswer === false) {
+      toast.error(`Not empty Answers ${indexA + 1} at Questions ${indexQ + 1}`);
+      return;
+    }
+
+    //Valid Questions
+    let isValidQ = true;
+    let indexQ1 = 0;
+    for (let i = 0; i < questions.length; i++) {
+      if (!questions[i].descripton) {
+        isValidQ = false;
+        indexQ1 = i;
+        break;
+      }
+    }
+    if (isValidQ === false) {
+      toast.error(`Not empty description for question ${indexQ1 + 1}`);
+      return;
+    }
+
+    //submit questions
+    for (const question of questions) {
+      const q = await postCreateNewQuestionForQuiz(
+        +selectedQuiz.value,
+        question.descripton,
+        question.imageFile
+      );
+
+      //submit answers
+      for (const answer of question.answers) {
+        await postCreateNewAnswerForQuiz(
+          answer.descripton,
+          answer.isCorrect,
+          q.DT.id
+        );
+      }
+    }
+    toast.success("Create questions and answers success ");
+    setQuestions(initQuestions);
   };
 
   return (
@@ -161,10 +244,10 @@ const Questions = () => {
           <Select
             defaultValue={selectedQuiz}
             onChange={setSelectedQuiz}
-            options={options}
+            options={listQuiz}
           />
         </div>
-        <div className="mt-3 mb-2">Add questions:</div>
+        <div className="mt-4 mb-2">Add questions:</div>
 
         {questions &&
           questions.length > 0 &&
@@ -172,12 +255,11 @@ const Questions = () => {
             return (
               <div key={question.id} className="q-main mb-4">
                 <div className="questions-content">
-                  <div className="form-floating description">
+                  <div className="mb-3 description">
                     <input
                       type="text"
-                      className="form-control"
-                      placeholder="name@example.com"
                       value={question.descripton}
+                      className="form-control"
                       onChange={(event) =>
                         handleOnChange(
                           "QUESTION",
@@ -185,9 +267,10 @@ const Questions = () => {
                           event.target.value
                         )
                       }
+                      placeholder={`Questions ${index + 1} description`}
                     />
-                    <label>Questions {index + 1} description </label>
                   </div>
+
                   <div className="group-Upload">
                     <label htmlFor={`${question.id}`}>
                       <RiImageAddFill className="label-upload" />
@@ -236,7 +319,8 @@ const Questions = () => {
                     return (
                       <div key={answer.id} className="answers-content">
                         <input
-                          className="form-check-input iscorrect"
+                          className="form-check-input iscorrect "
+                          style={{ marginBottom: "15px" }}
                           type="checkbox"
                           checked={answer.isCorrect}
                           onChange={(event) =>
@@ -248,12 +332,12 @@ const Questions = () => {
                             )
                           }
                         />
-                        <div className="form-floating answer-name ">
+
+                        <div className="mb-3 answer-name">
                           <input
                             value={answer.descripton}
                             type="text"
                             className="form-control"
-                            placeholder="Answers"
                             onChange={(event) =>
                               hanleAnswerQuestion(
                                 "INPUT",
@@ -262,9 +346,10 @@ const Questions = () => {
                                 event.target.value
                               )
                             }
+                            placeholder={`Answers ${index + 1}`}
                           />
-                          <label>Answers {index + 1}</label>
                         </div>
+
                         <div className="btn-group">
                           <span
                             onClick={() =>

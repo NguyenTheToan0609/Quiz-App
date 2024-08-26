@@ -15,8 +15,12 @@
       width: 50%;
     }
 
+    .form-control {
+      height: 60px;
+    }
+
     .group-Upload {
-      padding-top: 15px;
+      padding-top: 20px;
       .label-upload {
         color: #9068ff;
         font-size: 25px;
@@ -34,6 +38,7 @@
         font-size: 25px;
         color: #2596ff;
         cursor: pointer;
+        margin-bottom: 15px;
       }
       &:hover {
         color: #0989ff;
@@ -61,11 +66,15 @@
       width: 47%;
     }
 
+    .form-control {
+      height: 50px;
+    }
     .btn-group {
       .icon-add {
         font-size: 25px;
         color: #2596ff;
         cursor: pointer;
+        margin-bottom: 10px;
       }
       &:hover {
         color: #0989ff;
@@ -75,6 +84,7 @@
         font-size: 25px;
         color: #e8771c;
         cursor: pointer;
+        margin-bottom: 10px;
       }
       &:hover {
         color: #ff7608;

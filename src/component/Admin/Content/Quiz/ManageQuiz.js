@@ -53,7 +53,7 @@ const ManageQuiz = () => {
             <div className="add-new">
               <fieldset className="border rounded-3 p-3">
                 <legend className="float-none w-auto px-3">Add new quiz</legend>
-                <div className="form-floating mb-3">
+                <div className="form-floating mb-4">
                   <input
                     type="text"
                     className="form-control"
