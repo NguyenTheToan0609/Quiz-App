@@ -1,4 +1,7 @@
-import { FRTCH_USER_LOGIN_SUCCSESS } from "../action/userAction";
+import {
+  FRTCH_USER_LOGIN_SUCCSESS,
+  USER_LOGOUT_SUCCSESS,
+} from "../action/userAction";
 const INITIAL_STATE = {
   account: {
     access_token: "",
@@ -6,6 +9,7 @@ const INITIAL_STATE = {
     username: "",
     role: "",
     image: "",
+    email: "",
   },
   isAuthenticated: false,
 };
@@ -21,8 +25,23 @@ const userReducer = (state = INITIAL_STATE, action) => {
           username: action?.payload?.DT?.username,
           role: action?.payload?.DT?.role,
           image: action?.payload?.DT?.image,
+          email: action?.payload?.DT?.email,
         },
         isAuthenticated: true,
+      };
+
+    case USER_LOGOUT_SUCCSESS:
+      return {
+        ...state,
+        account: {
+          access_token: "",
+          refresh_token: "",
+          username: "",
+          role: "",
+          image: "",
+          email: "",
+        },
+        isAuthenticated: false,
       };
 
     default:
