@@ -5,7 +5,7 @@ import Question from "./Question";
 import _ from "lodash";
 import "./DetailQuiz.scss";
 import ModalResult from "./ModalResult";
-import RightContent from "./Content/RightConten";
+import RightContent from "./Content/RightContent";
 
 const DetailQuiz = () => {
   const params = useParams();
@@ -81,8 +81,6 @@ const DetailQuiz = () => {
   };
 
   const handleFinish = async () => {
-    console.log("check data before submit : ", dataQuiz);
-
     let qayload = {
       quizId: +quizId,
       answers: [],
@@ -152,7 +150,7 @@ const DetailQuiz = () => {
         </div>
       </div>
       <div className="right-content">
-        <RightContent dataQuiz={dataQuiz} />
+        <RightContent dataQuiz={dataQuiz} handleFinish={handleFinish} />
       </div>
       <ModalResult
         show={isShowModelReult}
