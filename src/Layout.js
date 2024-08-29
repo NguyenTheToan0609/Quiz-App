@@ -4,7 +4,7 @@ import User from "./component/User/User";
 import Admin from "./component/Admin/Admin";
 import HomePage from "./component/Home/HomePage";
 import ManagerUser from "./component/Admin/Content/UserAdmin/ManageUser";
-import DashBoard from "./component/Admin/Content/DashBroad";
+import DashBoard from "./component/Admin/Content/DashBoard";
 import Login from "./component/Auth/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
