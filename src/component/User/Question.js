@@ -2,8 +2,11 @@ import _ from "lodash";
 import { useState } from "react";
 import Lightbox from "react-awesome-lightbox";
 import { BsCursor } from "react-icons/bs";
+import { useTranslation, Trans } from "react-i18next";
 
 const Question = (props) => {
+  const { t } = useTranslation();
+
   const { data, index, handleCheckBox } = props;
   const [isPreViewImage, setIsPreViewImage] = useState(false);
   if (_.isEmpty(data)) {
@@ -36,7 +39,7 @@ const Question = (props) => {
       )}
 
       <div className="question">
-        Question {index + 1} : {data.questionDescription}
+        {t("question.question")} {index + 1} : {data.questionDescription}
       </div>
       <div className="answer">
         {data.answers &&

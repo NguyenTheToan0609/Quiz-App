@@ -8,7 +8,9 @@ import { postLogOut } from "../../services/apiServices";
 import { toast } from "react-toastify";
 import { doLogout } from "../../redux/action/userAction";
 import Language from "./Language";
+import { useTranslation, Trans } from "react-i18next";
 const Header = () => {
+  const { t } = useTranslation();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const account = useSelector((state) => state.user.account);
   const dispatch = useDispatch();
@@ -45,30 +47,30 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink to="/" className="nav-link">
-              Home
+              {t("header.home")}
             </NavLink>
             <NavLink to="users" className="nav-link">
-              Users
+              {t("header.user")}
             </NavLink>
             <NavLink to="admins" className="nav-link">
-              Admin
+              {t("header.admin")}
             </NavLink>
           </Nav>
           <Nav>
             {isAuthenticated === false ? (
               <>
                 <button className="btn-login" onClick={() => handleLogin()}>
-                  Log in
+                  {t("header.login")}
                 </button>
                 <button className="btn-signup" onClick={() => handleSignUp()}>
-                  Sign up
+                  {t("header.Signup")}
                 </button>
               </>
             ) : (
-              <NavDropdown title="Setting" id="basic-nav-dropdown">
-                <NavDropdown.Item>Profile</NavDropdown.Item>
+              <NavDropdown title={t("header.setting")} id="basic-nav-dropdown">
+                <NavDropdown.Item>{t("header.Profile")}</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => handleLogOut()}>
-                  Log out
+                  {t("header.Logout")}
                 </NavDropdown.Item>
               </NavDropdown>
             )}

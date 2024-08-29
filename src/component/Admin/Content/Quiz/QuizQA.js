@@ -8,6 +8,7 @@ import { RiImageAddFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import _ from "lodash";
+import { useTranslation, Trans } from "react-i18next";
 
 import {
   getQuizWithQA,
@@ -20,6 +21,8 @@ import {
 import Lightbox from "react-awesome-lightbox";
 
 const QuizQA = () => {
+  const { t } = useTranslation();
+
   const initQuestions = [
     {
       id: uuidv4(),
@@ -303,14 +306,14 @@ const QuizQA = () => {
     <div className="questions-container">
       <div className="add-new-questions">
         <div className="col-6 form-group">
-          <label className="mb-2">Select quiz:</label>
+          <label className="mb-2">{t("QuizQA.SelectQuiz")}:</label>
           <Select
             defaultValue={selectedQuiz}
             onChange={setSelectedQuiz}
             options={listQuiz}
           />
         </div>
-        <div className="mt-4 mb-2">Add questions:</div>
+        <div className="mt-4 mb-2">{t("QuizQA.AddQuestion")}:</div>
 
         {questions &&
           questions.length > 0 &&
@@ -449,7 +452,7 @@ const QuizQA = () => {
               onClick={() => handleSubmitQuetionForQuiz()}
               className="btn btn-warning"
             >
-              Save Questions
+              {t("QuizQA.Save")}
             </button>
           </div>
         )}

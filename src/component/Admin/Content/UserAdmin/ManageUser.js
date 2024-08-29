@@ -11,8 +11,10 @@ import ModalUpdateUser from "./ModalUpdateUser";
 import ModalViewUser from "./ModalViewUser";
 import ModalDeleteUser from "./ModalDeleteUser";
 import TableUserPaginate from "./TableUserPaginate";
+import { useTranslation, Trans } from "react-i18next";
 
 const ManagerUser = (props) => {
+  const { t } = useTranslation();
   const LIMIT_USER = 2;
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
@@ -73,7 +75,7 @@ const ManagerUser = (props) => {
 
   return (
     <div className="manage-user-container">
-      <div className="title">Manage User</div>
+      <div className="title">{t("ManageUser.title")}</div>
 
       <div className="users-content">
         <div className="btn-add-new">
@@ -81,7 +83,7 @@ const ManagerUser = (props) => {
             className="btn btn-primary"
             onClick={() => setShowModalCreateUser(true)}
           >
-            <FcPlus /> Add new users
+            <FcPlus /> {t("ManageUser.add-user")}
           </button>
         </div>
         <div className="table-users-container">

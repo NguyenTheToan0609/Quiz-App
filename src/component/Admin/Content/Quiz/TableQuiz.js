@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { getAllQuizForAdmin } from "../../../../services/apiServices";
 import ManageUpdateQuiz from "./ManageUpdateQuiz";
 import ManageDeleteQuiz from "./ManageDeleteQuiz";
+import { useTranslation, Trans } from "react-i18next";
 
 const TableQuiz = (props) => {
+  const { t } = useTranslation();
+
   const [listQuiz, setListQuiz] = useState([]);
   const [isShowModalUpdate, setIsShowModalUpdate] = useState(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState(false);
@@ -39,10 +42,10 @@ const TableQuiz = (props) => {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Type</th>
-            <th scope="col">Actions</th>
+            <th scope="col">{t("TableQuiz.Name")}</th>
+            <th scope="col">{t("TableQuiz.Description")}</th>
+            <th scope="col">{t("TableQuiz.QuizType")}</th>
+            <th scope="col">{t("TableQuiz.Action")}</th>
           </tr>
         </thead>
         <tbody>
@@ -66,13 +69,13 @@ const TableQuiz = (props) => {
                       className="btn btn-warning"
                       onClick={() => handleUpdate(item)}
                     >
-                      Edit
+                      {t("TableQuiz.Edit")}
                     </button>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleDelete(item)}
                     >
-                      Delete
+                      {t("TableQuiz.Delete")}
                     </button>
                   </td>
                 </tr>

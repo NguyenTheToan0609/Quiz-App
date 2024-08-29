@@ -1,0 +1,162 @@
+{
+  "homepage": {
+    "title1": "Có một cách tốt hơn để hỏi",
+    "title2": "Trang web cung cấp hàng nghìn câu hỏi trắc nghiệm và bài tập tiểu luận ở nhiều cấp độ, từ cơ bản đến nâng cao. Với giao diện trực quan, thân thiện, bạn có thể dễ dàng thực hiện bài kiểm tra và theo dõi kết quả của mình. kết quả và nhận được phân tích chi tiết về điểm mạnh và điểm yếu của bạn.",
+    "title3": {
+      "btn1": "Bắt đầu",
+      "btn2": "Làm bài kiểm tra ngay bây giờ"
+    }
+  },
+  "header": {
+    "home": " Trang Chủ",
+    "user": "Người Dùng",
+    "admin": "Quản Trị",
+    "login": "Đăng Nhập",
+    "Signup": "Đăng Ký",
+    "Logout": " Đăng Xuất",
+    "setting": "Cài đặt",
+    "Profile": "Hồ Sơ"
+  },
+  "login": {
+    "account": "Bạn chưa có tài khoản ?",
+    "register": "Đăng Ký",
+    "Password": "Mật Khẩu",
+    "forget-password": "Quên mật khẩu",
+    "Login-account": "Đăng Nhập",
+    "back": "Trở về trang chủ"
+  },
+  "register": {
+    "account": "Đã có tài khoản ?",
+    "login": "Đăng Nhập",
+    "Password": "Mật Khẩu",
+    "Username": "Tên Người Dùng",
+    "SignUp-account": "Đăng Ký",
+    "back": "Trở về trang chủ"
+  },
+  "listquiz": {
+    "quiz": "Bài",
+
+    "start": "Bắt đầu ngay",
+    "no-quiz": "Bạn không có bài thi nào"
+  },
+
+  "detailquiz": {
+    "quiz1": "Bài",
+    "question": "Câu",
+    "prve": "Trở Lại",
+    "next": "Tiếp Theo",
+    "Finish": "Nộp Bài"
+  },
+  "question": {
+    "question": "Câu"
+  },
+  "sidebar": {
+    "dashboard": "Tổng Quan",
+    "Features": "Chức Năng",
+    "manageuser": "Quản Lý Người Dùng",
+    "managequiz": "Quản Lý Bài Thi",
+    "managequestion": "Quản Lý Câu Hỏi"
+  },
+  "ManageUser": {
+    "title": "Quản Lý Người Dùng",
+    "add-user": "Thêm người dùng mới"
+  },
+
+  "ModalCreateUser": {
+    "title-add": "Thêm Người Dùng Mới",
+    "Password-add": "Mật Khẩu",
+    "Username-add": "Tên Người Dùng",
+    "Role": "Vai Trò",
+    "UpLoad": "Tải Ảnh",
+    "Close": "Đóng",
+    "Save": "Lưu"
+  },
+
+  "TableUser": {
+    "Username-tb": "Tên Người Dùng",
+    "Role-tb": "Vai Trò",
+    "Action": "Chức Năng",
+    "View": "Chi tiết",
+    "Update": "Sửa",
+    "Delete": "Xoá"
+  },
+
+  "ModalViewUser": {
+    "title-view": "Thông Tin Chi Tiết",
+    "Password-view": "Mật Khẩu",
+    "Username-view": "Tên Người Dùng",
+    "Role-view": "Vai Trò",
+    "UpLoad-view": "Tải Ảnh",
+    "Close-view": "Đóng"
+  },
+
+  "ModalUpdateUser": {
+    "title-update": "Sửa Người Dùng",
+    "Password-update": "Mật Khẩu",
+    "Username-update": "Tên Người Dùng",
+    "Role-update": "Vai Trò",
+    "UpLoad-update": "Tải Ảnh",
+    "Close-update": "Đóng",
+    "Save-update": "Lưu"
+  },
+
+  "ModalDeleteUser": {
+    "title-delete": "Xác nhận xoá người dùng",
+    "title2-delete": "Bạn có chắc muốn xoá người dùng với ",
+    "Cancel-delete": "Đóng",
+    "Confirm-delete": "Xác Nhận"
+  },
+
+  "ManageQuiz": {
+    "managequiz": "Quản lý bài thi",
+    "UpdateQA": "Chỉnh sửa câu hỏi và câu trả lời",
+    "Assign": "Phân quyền người dùng",
+    "Title": "Thêm bài thi",
+    "Name": "Tên bài thi",
+    "Description": "Mô tả",
+    "QuizType": "Loại bài thi",
+    "UpLoad": "Tải Ảnh",
+    "Save": "Lưu"
+  },
+  "TableQuiz": {
+    "Name": "Tên bài thi",
+    "Description": "Mô tả",
+    "QuizType": "Loại bài thi",
+    "Action": "Chức năng",
+    "Edit": "Sửa",
+    "Delete": "Xoá"
+  },
+  "ManageUpdateQuiz": {
+    "title": "Sửa Bài Thi",
+    "Name": "Tên bài thi",
+    "Description": "Mô tả",
+    "Type": "Loại bài thi",
+    "UpLoad": "Tải Ảnh",
+    "Close": "Đóng",
+    "Save": "Lưu"
+  },
+
+  "ManageDeleteQuiz": {
+    "title": "Xác nhận xoá bài thi",
+    "title2": "Bạn có chắc muốn xoá bài thi với ",
+    "Cancel": "Đóng",
+    "Confirm": "Xác Nhận"
+  },
+  "QuizQA": {
+    "SelectQuiz": "Chọn bài thi",
+    "AddQuestion": "Thêm câu hỏi",
+    "Save": "Lưu"
+  },
+
+  "AssignQuiz": {
+    "SelectQuiz": "Chọn Câu Hỏi",
+    "SelectUser": "Chọn Người Dùng",
+    "Assign": "Chỉ Định"
+  },
+  "Questions": {
+    "title": "Quản Lý Câu Hỏi",
+    "SelectQuiz": "Chọn bài thi",
+    "AddQuestion": "Thêm câu hỏi",
+    "Save": "Lưu Câu Hỏi"
+  }
+}

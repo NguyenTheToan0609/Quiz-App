@@ -4,8 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { postCreateNewUser } from "../../../../services/apiServices";
+import { useTranslation, Trans } from "react-i18next";
 
 const ModalCreateUser = (props) => {
+  const { t } = useTranslation();
   const { show, setShow, fetchListUser } = props;
 
   // const [show, setShow] = useState(false);
@@ -77,7 +79,7 @@ const ModalCreateUser = (props) => {
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add new users</Modal.Title>
+          <Modal.Title>{t("ModalCreateUser.title-add")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -91,7 +93,9 @@ const ModalCreateUser = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Password</label>
+              <label className="form-label">
+                {t("ModalCreateUser.Password-add")}
+              </label>
               <input
                 type="password"
                 className="form-control"
@@ -101,7 +105,9 @@ const ModalCreateUser = (props) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label">Username</label>
+              <label className="form-label">
+                {t("ModalCreateUser.Username-add")}
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -110,7 +116,7 @@ const ModalCreateUser = (props) => {
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Role</label>
+              <label className="form-label">{t("ModalCreateUser.Role")}</label>
               <select
                 className="form-select"
                 onChange={(event) => setRole(event.target.value)}
@@ -122,7 +128,7 @@ const ModalCreateUser = (props) => {
             <div className="col-md-12">
               <label className="form-label label-upload" htmlFor="labelUpload">
                 <FcPlus />
-                Upload File Image
+                {t("ModalCreateUser.UpLoad")}
               </label>
               <input
                 type="File"
@@ -142,10 +148,10 @@ const ModalCreateUser = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("ModalCreateUser.Close")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-            Save
+            {t("ModalCreateUser.Save")}
           </Button>
         </Modal.Footer>
       </Modal>

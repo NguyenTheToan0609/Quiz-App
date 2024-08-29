@@ -6,8 +6,11 @@ import _ from "lodash";
 import "./DetailQuiz.scss";
 import ModalResult from "./ModalResult";
 import RightContent from "./Content/RightContent";
+import { useTranslation, Trans } from "react-i18next";
 
 const DetailQuiz = () => {
+  const { t } = useTranslation();
+
   const params = useParams();
   const location = useLocation();
   const quizId = params.id;
@@ -123,7 +126,7 @@ const DetailQuiz = () => {
     <div className="detail-quiz-container">
       <div className="left-content">
         <div className="title">
-          Quiz {quizId} : {location?.state?.quizDetail}
+          {t("detailquiz.quiz1")} {quizId} : {location?.state?.quizDetail}
           <hr />
         </div>
         {/* <div className="q-body">
@@ -139,13 +142,13 @@ const DetailQuiz = () => {
 
         <div className="footer">
           <button className="btn btn-danger" onClick={() => handlePrev()}>
-            Prev
+            {t("detailquiz.prve")}
           </button>
           <button className="btn btn-primary" onClick={() => handleNext()}>
-            Next
+            {t("detailquiz.next")}
           </button>
           <button className="btn btn-warning" onClick={() => handleFinish()}>
-            Finish
+            {t("detailquiz.Finish")}
           </button>
         </div>
       </div>

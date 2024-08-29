@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { useTranslation, Trans } from "react-i18next";
 
 const TableUserPaginate = (props) => {
+  const { t } = useTranslation();
   const {
     listUsers,
     handleClickBtnUpdate,
@@ -21,10 +23,10 @@ const TableUserPaginate = (props) => {
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Username</th>
+            <th scope="col">{t("TableUser.Username-tb")}</th>
             <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Action</th>
+            <th scope="col">{t("TableUser.Role-tb")}</th>
+            <th scope="col">{t("TableUser.Action")}</th>
           </tr>
         </thead>
         <tbody>
@@ -42,19 +44,19 @@ const TableUserPaginate = (props) => {
                       className="btn btn-secondary"
                       onClick={() => handleClickBtnView(item)}
                     >
-                      View
+                      {t("TableUser.View")}
                     </button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => handleClickBtnUpdate(item)}
                     >
-                      Update
+                      {t("TableUser.Update")}
                     </button>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleClickBtnDelete(item)}
                     >
-                      Delete
+                      {t("TableUser.Delete")}
                     </button>
                   </td>
                 </tr>

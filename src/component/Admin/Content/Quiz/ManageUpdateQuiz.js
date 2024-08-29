@@ -5,8 +5,11 @@ import { FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
 import _ from "lodash";
 import { putUpdateQuizForAdmin } from "../../../../services/apiServices";
+import { useTranslation, Trans } from "react-i18next";
 
 const ManageUpdateQuiz = (props) => {
+  const { t } = useTranslation();
+
   const { show, setShow, dataUpdate, setDataUpdate, fetchQuiz } = props;
 
   const [name, setName] = useState("");
@@ -73,12 +76,12 @@ const ManageUpdateQuiz = (props) => {
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update a Quiz</Modal.Title>
+          <Modal.Title>{t("ManageUpdateQuiz.title")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Name</label>
+              <label className="form-label">{t("ManageUpdateQuiz.Name")}</label>
               <input
                 type="email"
                 className="form-control"
@@ -87,7 +90,9 @@ const ManageUpdateQuiz = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Description</label>
+              <label className="form-label">
+                {t("ManageUpdateQuiz.Description")}
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -97,7 +102,7 @@ const ManageUpdateQuiz = (props) => {
             </div>
 
             <div className="col-md-4">
-              <label className="form-label">Type</label>
+              <label className="form-label">{t("ManageUpdateQuiz.Type")}</label>
               <select
                 className="form-select"
                 onChange={(event) => setType(event.target.value)}
@@ -110,7 +115,7 @@ const ManageUpdateQuiz = (props) => {
             <div className="col-md-12">
               <label className="form-label label-upload" htmlFor="labelUpload">
                 <FcPlus />
-                Upload File Image
+                {t("ManageUpdateQuiz.UpLoad")}
               </label>
               <input
                 type="File"
@@ -130,10 +135,10 @@ const ManageUpdateQuiz = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("ManageUpdateQuiz.Close")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitUpdateQuiz()}>
-            Save
+            {t("ManageUpdateQuiz.Save")}
           </Button>
         </Modal.Footer>
       </Modal>

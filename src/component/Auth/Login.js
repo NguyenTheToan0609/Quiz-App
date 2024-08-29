@@ -7,7 +7,10 @@ import { useDispatch } from "react-redux";
 import { doLogin } from "../../redux/action/userAction";
 import { ImSpinner10 } from "react-icons/im";
 import Language from "../Header/Language";
+import { useTranslation, Trans } from "react-i18next";
+
 const Login = (props) => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -54,8 +57,10 @@ const Login = (props) => {
   return (
     <div className="login-container">
       <div className="header">
-        <span>Don't have an account yet ?</span>
-        <button onClick={() => navigate("/register")}>Sign Up</button>
+        <span>{t("login.account")}</span>
+        <button onClick={() => navigate("/register")}>
+          {t("login.register")}
+        </button>
         <Language />
       </div>
       <div className="title col-4 mx-auto">TypeForm Login</div>
@@ -71,7 +76,7 @@ const Login = (props) => {
           ></input>
         </div>
         <div className="form-group">
-          <label>Password</label>
+          <label> {t("login.Password")}</label>
           <input
             type={"password"}
             className="form-control"
@@ -80,7 +85,7 @@ const Login = (props) => {
             onKeyDown={(event) => handleKeyDown(event)}
           ></input>
         </div>
-        <span className="forget-password">Forgot password?</span>
+        <span className="forget-password"> {t("login.forget-password")}</span>
         <div>
           <button
             className="btn-submit"
@@ -88,7 +93,7 @@ const Login = (props) => {
             disabled={isLoading}
           >
             {isLoading === true && <ImSpinner10 className="loader-Icon" />}
-            Login to Typeform
+            {t("login.Login-account")}
           </button>
         </div>
         <div className="text-center">
@@ -98,7 +103,7 @@ const Login = (props) => {
               navigate("/");
             }}
           >
-            &#60;&#60;Go to HomePage
+            &#60;&#60; {t("login.back")}
           </span>
         </div>
       </div>

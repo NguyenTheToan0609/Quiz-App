@@ -6,8 +6,11 @@ import {
   postAssignQuiz,
 } from "../../../../services/apiServices";
 import { toast } from "react-toastify";
+import { useTranslation, Trans } from "react-i18next";
 
 const AssignQuiz = (props) => {
+  const { t } = useTranslation();
+
   const [listQuiz, setListQuiz] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState({});
 
@@ -57,7 +60,7 @@ const AssignQuiz = (props) => {
   return (
     <div className="assign-container row">
       <div className="col-6 form-group ">
-        <label className="mb-2">Select quiz:</label>
+        <label className="mb-2">{t("AssignQuiz.SelectQuiz")}:</label>
         <Select
           defaultValue={selectedQuiz}
           onChange={setSelectedQuiz}
@@ -65,7 +68,7 @@ const AssignQuiz = (props) => {
         />
       </div>
       <div className="col-6 form-group ">
-        <label className="mb-2">Select User:</label>
+        <label className="mb-2"> {t("AssignQuiz.SelectUser")}:</label>
         <Select
           defaultValue={selectedUser}
           onChange={setSelectedUser}
@@ -75,7 +78,7 @@ const AssignQuiz = (props) => {
 
       <div>
         <button className="btn btn-warning mt-3" onClick={() => handleAssign()}>
-          Assign
+          {t("AssignQuiz.Assign")}
         </button>
       </div>
     </div>

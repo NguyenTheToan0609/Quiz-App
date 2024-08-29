@@ -5,8 +5,10 @@ import { toast } from "react-toastify";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { postSignUp } from "../../services/apiServices";
 import Language from "../Header/Language";
+import { useTranslation, Trans } from "react-i18next";
 
 const Register = (props) => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -43,8 +45,10 @@ const Register = (props) => {
   return (
     <div className="login-container">
       <div className="header">
-        <span>Already have an account?</span>
-        <button onClick={() => navigate("/login")}>Log in</button>
+        <span>{t("register.account")}</span>
+        <button onClick={() => navigate("/login")}>
+          {t("register.login")}
+        </button>
         <Language />
       </div>
       <div className="title col-4 mx-auto">TypeForm Register</div>
@@ -60,7 +64,7 @@ const Register = (props) => {
           />
         </div>
         <div className="form-group pass-group">
-          <label>Password (*)</label>
+          <label>{t("register.Password")} (*)</label>
           <input
             type={isShowpassword ? "text" : "password"}
             className="form-control"
@@ -82,7 +86,7 @@ const Register = (props) => {
           )}
         </div>
         <div className="form-group">
-          <label>Username</label>
+          <label>{t("register.Username")}</label>
           <input
             type={"text"}
             className="form-control"
@@ -92,7 +96,7 @@ const Register = (props) => {
         </div>
         <div>
           <button className="btn-submit" onClick={() => handleRegister()}>
-            Sign Up to Typeform
+            {t("register.SignUp-account")}
           </button>
         </div>
         <div className="text-center">
@@ -102,7 +106,7 @@ const Register = (props) => {
               navigate("/");
             }}
           >
-            &#60;&#60;Go to HomePage
+            &#60;&#60;{t("register.back")}
           </span>
         </div>
       </div>

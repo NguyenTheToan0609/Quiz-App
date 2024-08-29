@@ -1,0 +1,160 @@
+{
+  "homepage": {
+    "title1": "There's a better way to ask",
+    "title2": "The website provides thousands of multiple-choice questions and essay exercises at many levels, from basic to advanced. With an intuitive, friendly interface, you can easily do the test and track your results. results and receive detailed analysis of your strengths and weaknesses.",
+    "title3": {
+      "btn1": "Get's started",
+      "btn2": "Doing Quiz Now"
+    }
+  },
+  "header": {
+    "home": " Home",
+    "user": "Users",
+    "admin": "Admin",
+    "login": "Log in",
+    "Signup": "Sign up",
+    "Logout": " Log out",
+    "setting": "Setting",
+    "Profile": "Profile"
+  },
+  "login": {
+    "account": "Don't have an account yet ?",
+    "register": "register",
+    "Password": "Password",
+    "forget-password": "forget-password",
+    "Login-account": " Login to Typeform",
+    "back": "Go to HomePage"
+  },
+  "register": {
+    "account": "Don't have an account yet ?",
+    "login": "register",
+    "Password": "Password",
+    "Username": "Username",
+    "SignUp-account": " Login to Typeform",
+    "back": "Go to HomePage"
+  },
+
+  "listquiz": {
+    "quiz": "Quiz",
+    "start": "Start Now",
+    "no-quiz": "You don't have Quiz Now"
+  },
+
+  "detailquiz": {
+    "quiz1": "Quiz",
+    "prve": "Prve",
+    "next": "Next",
+    "Finish": "Finish"
+  },
+  "question": {
+    "question": "Question"
+  },
+  "sidebar": {
+    "dashboard": "dashboard",
+    "Features": "Features",
+    "manageuser": "Manage User",
+    "managequiz": "Manage Quiz",
+    "managequestion": "Manage Question"
+  },
+  "ManageUser": {
+    "title": "Manage User",
+    "add-user": "Add new users"
+  },
+
+  "TableUser": {
+    "Username-tb": "Username",
+    "Role-tb": "Role",
+    "Action": "Action",
+    "View": "View",
+    "Update": "Update",
+    "Delete": "Delete"
+  },
+
+  "ModalCreateUser": {
+    "title-add": "Add New User",
+    "Password-add": "Password",
+    "Username-add": "Username",
+    "Role": "Role",
+    "UpLoad": "UpLoad File Image",
+    "Close": "Close",
+    "Save": "Save"
+  },
+  "ModalViewUser": {
+    "title-view": "View a Info User",
+    "Password-view": "Password",
+    "Username-view": "Username",
+    "Role-view": "Role",
+    "UpLoad-view": "UpLoad File Image",
+    "Close-view": "Close"
+  },
+
+  "ModalUpdateUser": {
+    "title-update": "Add New User",
+    "Password-update": "Password",
+    "Username-update": "Username",
+    "Role-update": "Role",
+    "UpLoad-update": "UpLoad File Image",
+    "Close-update": "Close",
+    "Save-update": "Save"
+  },
+  "ModalDeleteUser": {
+    "title-delete": "Confirm Delete the User ?",
+    "title2-delete": "Are you sure to delete this user",
+    "Cancel-delete": "Close",
+    "Confirm-delete": "Save"
+  },
+
+  "ManageQuiz": {
+    "managequiz": "Manage Quiz",
+    "UpdateQA": "Update Q/A Quizzes",
+    "Assign": "Assign to Users",
+    "Title": "Add new quiz",
+    "Name": "Name",
+    "Description": "Description",
+    "QuizType": "Quiz Type",
+    "UpLoad": "UpLoad Image",
+    "Save": "Save"
+  },
+  "TableQuiz": {
+    "Name": "Name",
+    "Description": "Description",
+    "QuizType": "Quiz Type",
+    "Action": "Action",
+    "Edit": "Edit",
+    "Delete": "Delete"
+  },
+  "ManageUpdateQuiz": {
+    "Title": "Update a Quiz",
+    "Name": "Name",
+    "Description": "Description",
+    "Type": "Role",
+    "UpLoad": "UpLoad File Image",
+    "Close": "Close",
+    "Save": "Save"
+  },
+  "ManageDeleteQuiz": {
+    "title-delete": "Confirm Delete the Quiz?",
+    "title2-delete": "Are you sure to Delete this quiz",
+    "Cancel-delete": "Close",
+    "Confirm-delete": "Save"
+  },
+
+  "QuizQA": {
+    "SelectQuiz": "Select Quiz",
+    "AddQuestion": "Add Question",
+    "Save": "Save Questions"
+  },
+
+  "AssignQuiz": {
+    "SelectQuiz": "Select Quiz",
+    "SelectUser": "Select User",
+    "Assign": "Assign"
+  },
+
+  "Questions": {
+    "title": "Manage Questions",
+    "SelectQuiz": "Select Quiz",
+    "AddQuestion": "Add Question",
+    "Save": "Save Questions"
+  }
+}

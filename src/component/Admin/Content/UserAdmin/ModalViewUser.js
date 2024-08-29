@@ -3,8 +3,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import _ from "lodash";
+import { useTranslation, Trans } from "react-i18next";
 
 const ModalUpdateUser = (props) => {
+  const { t } = useTranslation();
+
   const { show, setShow, dataView, resetViewData } = props;
 
   // const [show, setShow] = useState(false);
@@ -49,7 +52,7 @@ const ModalUpdateUser = (props) => {
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>View a Info User</Modal.Title>
+          <Modal.Title>{t("ModalViewUser.title-view")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -64,7 +67,9 @@ const ModalUpdateUser = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Password</label>
+              <label className="form-label">
+                {t("ModalViewUser.Password-view")}
+              </label>
               <input
                 disabled
                 type="password"
@@ -75,7 +80,9 @@ const ModalUpdateUser = (props) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label">Username</label>
+              <label className="form-label">
+                {t("ModalViewUser.Username-view")}
+              </label>
               <input
                 disabled
                 type="text"
@@ -85,7 +92,9 @@ const ModalUpdateUser = (props) => {
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Role</label>
+              <label className="form-label">
+                {t("ModalViewUser.Role-view")}
+              </label>
               <select
                 disabled
                 className="form-select"
@@ -99,7 +108,7 @@ const ModalUpdateUser = (props) => {
             <div className="col-md-12">
               <label className="form-label label-upload" htmlFor="labelUpload">
                 <FcPlus />
-                Upload File Image
+                {t("ModalViewUser.UpLoad-view")}
               </label>
               <input disabled type="File" id="labelUpload" hidden />
             </div>
@@ -114,7 +123,7 @@ const ModalUpdateUser = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("ModalViewUser.Close-view")}
           </Button>
         </Modal.Footer>
       </Modal>
