@@ -259,23 +259,6 @@ const QuizQA = () => {
       return;
     }
 
-    // //submit questions
-    // for (const question of questions) {
-    //   const q = await postCreateNewQuestionForQuiz(
-    //     +selectedQuiz.value,
-    //     question.description,
-    //     question.imageFile
-    //   );
-
-    //   //submit answers
-    //   for (const answer of question.answers) {
-    //     await postCreateNewAnswerForQuiz(
-    //       answer.description,
-    //       answer.isCorrect,
-    //       q.DT.id
-    //     );
-    //   }
-    // }
     let questionsClone = _.cloneDeep(questions);
     for (let i = 0; i < questionsClone.length; i++) {
       if (questionsClone[i].imageFile) {

@@ -11,8 +11,11 @@ import {
 } from "recharts";
 import { getOverView } from "../../../services/apiServices";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const DashBoard = (props) => {
+  const { t } = useTranslation();
+
   const [dataOverView, setDataOverView] = useState([]);
   const [dataChart, setDataChart] = useState([]);
 
@@ -46,16 +49,15 @@ const DashBoard = (props) => {
       ];
       setDataChart(data);
     }
-    console.log("check res ", res);
   };
 
   return (
     <div className="dashboard-container">
-      <div className="title"> Analytics DashBoard</div>
+      <div className="title"> {t("DashBoard.title")}</div>
       <div className="content">
         <div className="c-left">
           <div className="child">
-            <span className="text-1">Total Users</span>
+            <span className="text-1">{t("DashBoard.total_user")}</span>
             <span className="text-2">
               {dataOverView &&
               dataOverView.users &&
@@ -67,7 +69,7 @@ const DashBoard = (props) => {
             </span>
           </div>
           <div className="child">
-            <span className="text-1">Total Quizzes</span>
+            <span className="text-1">{t("DashBoard.total_quiz")}</span>
             <span className="text-2">
               {dataOverView &&
               dataOverView.others &&
@@ -79,7 +81,7 @@ const DashBoard = (props) => {
             </span>
           </div>
           <div className="child">
-            <span className="text-1">Total Questions</span>
+            <span className="text-1">{t("DashBoard.total_queston")}</span>
             <span className="text-2">
               {dataOverView &&
               dataOverView.others &&
@@ -91,7 +93,7 @@ const DashBoard = (props) => {
             </span>
           </div>
           <div className="child">
-            <span className="text-1">Total Answers</span>
+            <span className="text-1">{t("DashBoard.total_answer")}</span>
             <span className="text-2">
               {" "}
               {dataOverView &&
@@ -109,7 +111,7 @@ const DashBoard = (props) => {
             <BarChart data={dataChart}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              {/* <YAxis /> */}
+              <YAxis />
               <Tooltip />
               <Legend />
               <Bar dataKey="Qz" fill="#8884d8" />

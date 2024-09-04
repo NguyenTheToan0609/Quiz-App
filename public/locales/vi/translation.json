@@ -4,18 +4,19 @@
     "title2": "Trang web cung cấp hàng nghìn câu hỏi trắc nghiệm và bài tập tiểu luận ở nhiều cấp độ, từ cơ bản đến nâng cao. Với giao diện trực quan, thân thiện, bạn có thể dễ dàng thực hiện bài kiểm tra và theo dõi kết quả của mình. kết quả và nhận được phân tích chi tiết về điểm mạnh và điểm yếu của bạn.",
     "title3": {
       "btn1": "Bắt đầu",
-      "btn2": "Làm bài kiểm tra ngay bây giờ"
+      "btn2": "Làm bài Quiz ngay bây giờ"
     }
   },
   "header": {
     "home": " Trang Chủ",
     "user": "Người Dùng",
+    "quiz": "Làm Bài Quiz",
     "admin": "Quản Trị",
     "login": "Đăng Nhập",
     "Signup": "Đăng Ký",
     "Logout": " Đăng Xuất",
     "setting": "Cài đặt",
-    "Profile": "Hồ Sơ"
+    "Profile": "Thông tin cá nhân"
   },
   "login": {
     "account": "Bạn chưa có tài khoản ?",
@@ -37,7 +38,7 @@
     "quiz": "Bài",
 
     "start": "Bắt đầu ngay",
-    "no-quiz": "Bạn không có bài thi nào"
+    "no-quiz": "Bạn không có bài Quiz nào"
   },
 
   "detailquiz": {
@@ -48,13 +49,13 @@
     "Finish": "Nộp Bài"
   },
   "question": {
-    "question": "Câu"
+    "question": "Câu hỏi"
   },
   "sidebar": {
     "dashboard": "Tổng Quan",
     "Features": "Chức Năng",
     "manageuser": "Quản Lý Người Dùng",
-    "managequiz": "Quản Lý Bài Thi",
+    "managequiz": "Quản Lý Bài Quiz",
     "managequestion": "Quản Lý Câu Hỏi"
   },
   "ManageUser": {
@@ -108,55 +109,94 @@
   },
 
   "ManageQuiz": {
-    "managequiz": "Quản lý bài thi",
-    "UpdateQA": "Chỉnh sửa câu hỏi và câu trả lời",
-    "Assign": "Phân quyền người dùng",
-    "Title": "Thêm bài thi",
-    "Name": "Tên bài thi",
+    "managequiz": "Quản lý bài Quiz",
+    "UpdateQA": "Cập Nhật Q/A Cho Quiz",
+    "Assign": "Gán Quiz Cho Người Dùng",
+    "Title": "Thêm bài Quiz",
+    "Name": "Tên bài Quiz",
     "Description": "Mô tả",
-    "QuizType": "Loại bài thi",
+    "QuizType": "Loại bài Quiz",
     "UpLoad": "Tải Ảnh",
     "Save": "Lưu"
   },
   "TableQuiz": {
-    "Name": "Tên bài thi",
+    "Name": "Tên bài Quiz",
     "Description": "Mô tả",
-    "QuizType": "Loại bài thi",
+    "QuizType": "Loại bài Quiz",
     "Action": "Chức năng",
     "Edit": "Sửa",
     "Delete": "Xoá"
   },
   "ManageUpdateQuiz": {
-    "title": "Sửa Bài Thi",
-    "Name": "Tên bài thi",
+    "title": "Sửa Bài Quiz",
+    "Name": "Tên bài Quiz",
     "Description": "Mô tả",
-    "Type": "Loại bài thi",
+    "Type": "Loại bài Quiz",
     "UpLoad": "Tải Ảnh",
     "Close": "Đóng",
     "Save": "Lưu"
   },
 
   "ManageDeleteQuiz": {
-    "title": "Xác nhận xoá bài thi",
-    "title2": "Bạn có chắc muốn xoá bài thi với ",
+    "title": "Xác nhận xoá bài Quiz",
+    "title2": "Bạn có chắc muốn xoá bài Quiz với ",
     "Cancel": "Đóng",
     "Confirm": "Xác Nhận"
   },
   "QuizQA": {
-    "SelectQuiz": "Chọn bài thi",
+    "SelectQuiz": "Chọn bài Quiz",
     "AddQuestion": "Thêm câu hỏi",
-    "Save": "Lưu"
+    "Save": "Cập Nhật"
   },
 
   "AssignQuiz": {
     "SelectQuiz": "Chọn Câu Hỏi",
     "SelectUser": "Chọn Người Dùng",
-    "Assign": "Chỉ Định"
+    "Assign": "Gán Quiz"
   },
   "Questions": {
     "title": "Quản Lý Câu Hỏi",
-    "SelectQuiz": "Chọn bài thi",
+    "SelectQuiz": "Chọn bài Quiz",
     "AddQuestion": "Thêm câu hỏi",
     "Save": "Lưu Câu Hỏi"
+  },
+  "DashBoard": {
+    "title": "Thống Kê",
+    "total_user": "Tổng Số Người Dùng",
+    "total_quiz": "Tổng Số Bài Quiz",
+    "total_queston": "Tổng Số Câu Hỏi",
+    "total_answer": "Tổng Số Câu Trả Lời"
+  },
+  "Profile": {
+    "title": "Quản Lý Thông Tin Người Dùng",
+    "user_info": "Thông Tin Người Dùng",
+    "changepass": "Đổi Mật Khẩu",
+    "history": "Lịch Sử Bài Thi"
+  },
+  "UserInFor": {
+    "username": "Tên Người Dùng",
+    "role": "Vai Trò",
+    "upLoad": "Tải Ảnh"
+  },
+
+  "Password": {
+    "currentPass": "Mật Khẩu Hiện Tại",
+    "newPass": "Mật Khẩu Mới",
+    "confirmPass": "Xác Nhận Lại Mật Khẩu"
+  },
+
+  "History": {
+    "quizName": "Tên Bài Quiz",
+    "totalQ": "Tổng Số Câu Hỏi",
+    "totalC": "Tổng Số Câu Đúng",
+    "date": "Ngày Làm Bài Quiz"
+  },
+
+  "ModalResult": {
+    "title": "Kết Quả",
+    "totalQ": "Tổng Số Câu Hỏi",
+    "totalC": "Tổng Số Câu Trả Lời Đúng",
+    "showA": "Xem Đáp Án",
+    "close": "Đóng"
   }
 }

@@ -3,12 +3,13 @@ import { useState } from "react";
 import Lightbox from "react-awesome-lightbox";
 import { BsCursor } from "react-icons/bs";
 import { useTranslation, Trans } from "react-i18next";
-
+import { IoIosClose, IoIosCheckmark } from "react-icons/io";
 const Question = (props) => {
   const { t } = useTranslation();
 
-  const { data, index, handleCheckBox } = props;
+  const { data, index, handleCheckBox, isShowAnswer, isSubmitQuiz } = props;
   const [isPreViewImage, setIsPreViewImage] = useState(false);
+
   if (_.isEmpty(data)) {
     return <></>;
   }
@@ -52,11 +53,23 @@ const Question = (props) => {
                     className="form-check-input"
                     type="checkbox"
                     checked={a.isSelected}
+                    disabled={isSubmitQuiz}
                     onChange={(event) =>
-                      handleOnChangeCheckBox(event, a.id, data.questionID)
+                      handleOnChangeCheckBox(event, a.id, data.questionId)
                     }
                   />
                   <label className="form-check-label">{a.description}</label>
+
+                  {isShowAnswer === true && (
+                    <>
+                      {a.isSelected === true && a.isCorrect === false && (
+                        <IoIosClose className="incorrect" />
+                      )}
+                      {a.isCorrect === true && (
+                        <IoIosCheckmark className="correct" />
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
             );

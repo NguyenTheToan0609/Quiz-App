@@ -15,6 +15,9 @@ import ManageQuiz from "./component/Admin/Content/Quiz/ManageQuiz";
 import Questions from "./component/Admin/Content/Question/Questions";
 import PrivateRoute from "./routes/PrivateRoute";
 import { Suspense } from "react";
+import { useSelector } from "react-redux";
+import PrivateRouteListQuiz from "./routes/PrivateRouteLisQuiz";
+
 const NotFound = () => {
   return (
     <div className="container mt-3 alert alert-danger">
@@ -22,7 +25,11 @@ const NotFound = () => {
     </div>
   );
 };
+
 const Layout = (props) => {
+  const account = useSelector((state) => state.user.account);
+  console.log("account", account);
+
   return (
     <Suspense fallback="...is loading">
       <Routes>
@@ -31,13 +38,14 @@ const Layout = (props) => {
           <Route
             path="/users"
             element={
-              <PrivateRoute>
+              <PrivateRouteListQuiz>
                 <ListQuiz />
-              </PrivateRoute>
+              </PrivateRouteListQuiz>
             }
           />
         </Route>
         <Route path="/quiz/:id" element={<DetailQuiz />} />
+
         <Route
           path="/admins"
           element={
@@ -51,6 +59,7 @@ const Layout = (props) => {
           <Route path="manage-quiz" element={<ManageQuiz />} />
           <Route path="manage-questions" element={<Questions />} />
         </Route>
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />

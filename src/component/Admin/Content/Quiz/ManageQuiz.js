@@ -11,6 +11,8 @@ import Accordion from "react-bootstrap/Accordion";
 import QuizQA from "./QuizQA";
 import AssignQuiz from "./AssignQuiz";
 import { useTranslation, Trans } from "react-i18next";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 
 const options = [
   { value: "EASY", label: "EASY" },
@@ -51,80 +53,88 @@ const ManageQuiz = () => {
 
   return (
     <div className="quiz-conatiner">
-      <Accordion defaultActiveKey="0">
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>{t("ManageQuiz.managequiz")}</Accordion.Header>
-          <Accordion.Body>
-            <div className="add-new">
-              <fieldset className="border rounded-3 p-3">
-                <legend className="float-none w-auto px-3">
-                  {t("ManageQuiz.Title")}
-                </legend>
-                <div className="form-floating mb-4">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="name"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                  />
-                  <label>{t("ManageQuiz.Name")}</label>
-                </div>
-                <div className="form-floating">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Description"
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                  />
-                  <label>{t("ManageQuiz.Description")}</label>
-                </div>
-                <div className="my-3">
-                  <Select
-                    defaultValue={type}
-                    onChange={setType}
-                    options={options}
-                    placeholder={t("ManageQuiz.QuizType")}
-                  />
-                </div>
+      <Tabs
+        defaultActiveKey="profile"
+        id="uncontrolled-tab-example"
+        className="mb-3"
+        justify
+      >
+        <Tab
+          className="p-3 pt-0"
+          eventKey="Manage_Quiz"
+          title={t("ManageQuiz.managequiz")}
+        >
+          <div className="add-new">
+            <fieldset className="border rounded-3 p-3">
+              <legend className="float-none w-auto px-3">
+                {t("ManageQuiz.Title")}
+              </legend>
+              <div className="form-floating mb-4">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
+                <label>{t("ManageQuiz.Name")}</label>
+              </div>
+              <div className="form-floating">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Description"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                />
+                <label>{t("ManageQuiz.Description")}</label>
+              </div>
+              <div className="my-3">
+                <Select
+                  defaultValue={type}
+                  onChange={setType}
+                  options={options}
+                  placeholder={t("ManageQuiz.QuizType")}
+                />
+              </div>
 
-                <div className="more-actions form-group">
-                  <label className="mb-1">{t("ManageQuiz.UpLoad")}</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    onClick={(event) => handleChangeEvent(event)}
-                  />
-                </div>
-                <div>
-                  <button
-                    className="btn btn-primary mt-3"
-                    onClick={() => handleSubmitQuiz()}
-                  >
-                    {t("ManageQuiz.Save")}
-                  </button>
-                </div>
-              </fieldset>
-            </div>
-            <div className="list-detail">
-              <TableQuiz />
-            </div>
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="1">
-          <Accordion.Header>{t("ManageQuiz.UpdateQA")}</Accordion.Header>
-          <Accordion.Body>
-            <QuizQA />
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="2">
-          <Accordion.Header>{t("ManageQuiz.Assign")}</Accordion.Header>
-          <Accordion.Body>
-            <AssignQuiz />
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+              <div className="more-actions form-group">
+                <label className="mb-1">{t("ManageQuiz.UpLoad")}</label>
+                <input
+                  type="file"
+                  className="form-control"
+                  onClick={(event) => handleChangeEvent(event)}
+                />
+              </div>
+              <div>
+                <button
+                  className="btn btn-primary mt-3"
+                  onClick={() => handleSubmitQuiz()}
+                >
+                  {t("ManageQuiz.Save")}
+                </button>
+              </div>
+            </fieldset>
+          </div>
+          <div className="list-detail">
+            <TableQuiz />
+          </div>
+        </Tab>
+        <Tab
+          className="p-3 pt-0"
+          eventKey="Update_Quiz"
+          title={t("ManageQuiz.UpdateQA")}
+        >
+          <QuizQA />
+        </Tab>
+        <Tab
+          className="p-3 pt-0"
+          eventKey="Assign"
+          title={t("ManageQuiz.Assign")}
+        >
+          <AssignQuiz />
+        </Tab>
+      </Tabs>
     </div>
   );
 };

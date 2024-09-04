@@ -8,8 +8,9 @@
     }
   },
   "header": {
-    "home": " Home",
+    "home": "Home",
     "user": "Users",
+    "quiz": "Quiz",
     "admin": "Admin",
     "login": "Log in",
     "Signup": "Sign up",
@@ -142,7 +143,7 @@
   "QuizQA": {
     "SelectQuiz": "Select Quiz",
     "AddQuestion": "Add Question",
-    "Save": "Save Questions"
+    "Save": "Update"
   },
 
   "AssignQuiz": {
@@ -156,5 +157,44 @@
     "SelectQuiz": "Select Quiz",
     "AddQuestion": "Add Question",
     "Save": "Save Questions"
+  },
+  "DashBoard": {
+    "title": "Analytics DashBoard",
+    "total_user": "Total Users",
+    "total_quiz": "Total Quizzes",
+    "total_queston": "Total Questions",
+    "total_answer": "Total Answers"
+  },
+  "Profile": {
+    "title": "User Information Management",
+    "user_info": "User Information",
+    "changepass": "change Password",
+    "history": "History"
+  },
+  "UserInFor": {
+    "username": "User Name",
+    "role": "Role",
+    "upLoad": "UpLoad File Image"
+  },
+
+  "Password": {
+    "currentPass": "Current Password",
+    "newPass": "New Password",
+    "confirmPass": "Confirm Password"
+  },
+
+  "History": {
+    "quizName": "Quiz Name",
+    "totalQ": "Total Questions",
+    "totalC": "Total Correct",
+    "date": "Date"
+  },
+
+  "ModalResult": {
+    "title": "Result",
+    "totalQ": "Total Questions",
+    "totalC": "Total Correct Answer",
+    "showA": "show Answer",
+    "close": "Close"
   }
 }

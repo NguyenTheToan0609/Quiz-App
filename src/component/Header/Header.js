@@ -9,12 +9,16 @@ import { toast } from "react-toastify";
 import { doLogout } from "../../redux/action/userAction";
 import Language from "./Language";
 import { useTranslation, Trans } from "react-i18next";
+import { useState } from "react";
+import Profile from "./Profile";
+
 const Header = () => {
   const { t } = useTranslation();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const account = useSelector((state) => state.user.account);
+  const [isShowModalProfile, setIsShowModalProfile] = useState(false);
+
   const dispatch = useDispatch();
-  console.log("account", account);
   //
   const navigate = useNavigate();
 
@@ -38,47 +42,55 @@ const Header = () => {
   };
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <NavLink to="/" className="navbar-brand">
-          App-Quiz
-        </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavLink to="/" className="nav-link">
-              {t("header.home")}
-            </NavLink>
-            <NavLink to="users" className="nav-link">
-              {t("header.user")}
-            </NavLink>
-            <NavLink to="admins" className="nav-link">
-              {t("header.admin")}
-            </NavLink>
-          </Nav>
-          <Nav>
-            {isAuthenticated === false ? (
-              <>
-                <button className="btn-login" onClick={() => handleLogin()}>
-                  {t("header.login")}
-                </button>
-                <button className="btn-signup" onClick={() => handleSignUp()}>
-                  {t("header.Signup")}
-                </button>
-              </>
-            ) : (
-              <NavDropdown title={t("header.setting")} id="basic-nav-dropdown">
-                <NavDropdown.Item>{t("header.Profile")}</NavDropdown.Item>
-                <NavDropdown.Item onClick={() => handleLogOut()}>
-                  {t("header.Logout")}
-                </NavDropdown.Item>
-              </NavDropdown>
-            )}
-            <Language />
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container>
+          <NavLink to="/" className="navbar-brand">
+            App-Quiz
+          </NavLink>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <NavLink to="/" className="nav-link">
+                {t("header.home")}
+              </NavLink>
+              <NavLink to="users" className="nav-link">
+                {t("header.user")}
+              </NavLink>
+              <NavLink to="admins" className="nav-link">
+                {t("header.admin")}
+              </NavLink>
+            </Nav>
+            <Nav>
+              {isAuthenticated === false ? (
+                <>
+                  <button className="btn-login" onClick={() => handleLogin()}>
+                    {t("header.login")}
+                  </button>
+                  <button className="btn-signup" onClick={() => handleSignUp()}>
+                    {t("header.Signup")}
+                  </button>
+                </>
+              ) : (
+                <NavDropdown
+                  title={t("header.setting")}
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>
+                    {t("header.Profile")}
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => handleLogOut()}>
+                    {t("header.Logout")}
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
+              <Language />
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <Profile show={isShowModalProfile} setShow={setIsShowModalProfile} />
+    </>
   );
 };
 
